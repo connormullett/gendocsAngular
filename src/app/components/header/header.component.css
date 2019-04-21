@@ -3,6 +3,12 @@
     flex: 1 1 auto;
 }
 
+.username {
+    margin-right: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .nav-btn {
     margin-right: 0.5em;
     background-color: #132584;

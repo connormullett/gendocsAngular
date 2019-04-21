@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Token } from '../models/token';
 import { Observable, Subject } from 'rxjs';
+import { User } from '../models/user';
 
 const API_URL = 'http://localhost:5000/v1/users';
 
@@ -41,8 +42,16 @@ export class AuthService {
   currentUser(): Observable<Object> {
     if(!localStorage.getItem('id_token')) { return new Observable(o => o.next(false)); }
 
-    const authHeader = new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
+    let data = this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+    console.log(data);
+    return data;
+  }
 
-    return this._http.get(`${API_URL}/v1/users/me`, { headers: authHeader });
+  username() {
+    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+  }
+
+  setHeaders() {
+    return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 }
