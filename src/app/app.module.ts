@@ -18,10 +18,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { AuthService } from './services/auth.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'me', component: ProfileComponent },
   { path: '**', component: RegistrationComponent },
 ];
 
@@ -30,7 +32,8 @@ const routes = [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

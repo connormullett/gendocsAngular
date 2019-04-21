@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { User } from 'src/app/models/user';
+import { UserLogin } from 'src/app/models/userLogin';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUserName() {
-    this._authService.username().subscribe( (user: User) => this.userName = user.name);
+    this._authService.username().subscribe( (user: UserLogin) => this.userName = user.name);
   }
 
   checkUserStatus() {

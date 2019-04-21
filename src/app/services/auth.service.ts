@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Token } from '../models/token';
 import { Observable, Subject } from 'rxjs';
+import { UserLogin } from '../models/userLogin';
 import { User } from '../models/user';
 
 const API_URL = 'http://localhost:5000/v1/users';
@@ -33,6 +34,10 @@ export class AuthService {
     });
   }
 
+  getMe() {
+    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+  }
+
   logout() {
     localStorage.clear();
     this.isLoggedIn.next(false);
@@ -42,9 +47,7 @@ export class AuthService {
   currentUser(): Observable<Object> {
     if(!localStorage.getItem('id_token')) { return new Observable(o => o.next(false)); }
 
-    let data = this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
-    console.log(data);
-    return data;
+    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
   }
 
   username() {
