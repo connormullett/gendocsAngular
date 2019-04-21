@@ -23,8 +23,9 @@ export class AuthService {
       email: loginInfo.email,
       password: loginInfo.password
     };
-    return this._http.post(`${API_URL}/token`, data).subscribe( (token: Token) => {
-      localStorage.setItem('id_token', token.access_token);
+    return this._http.post(`${API_URL}/login`, data).subscribe( (token: Token) => {
+      console.log(token);
+      localStorage.setItem('id_token', token.token);
       this._router.navigate(['/'])
     });
   }
