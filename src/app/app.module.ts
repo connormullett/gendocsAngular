@@ -21,6 +21,7 @@ import { AuthService } from './services/auth.service';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: RegistrationComponent },
 ];
 

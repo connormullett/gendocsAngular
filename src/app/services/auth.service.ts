@@ -11,6 +11,8 @@ const API_URL = 'http://localhost:5000/v1/users';
   providedIn: 'root'
 })
 export class AuthService {
+  userInfo: Token;
+  isLoggedIn = new Subject<boolean>();
 
   constructor(private _http: HttpClient, private _router: Router) { }
 
@@ -24,10 +26,16 @@ export class AuthService {
       password: loginInfo.password
     };
     return this._http.post(`${API_URL}/login`, data).subscribe( (token: Token) => {
-      console.log(token);
       localStorage.setItem('id_token', token.token);
+      this.isLoggedIn.next(true);
       this._router.navigate(['/'])
     });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.isLoggedIn.next(false);
+    this._router.navigate(['/login']);
   }
 
   currentUser(): Observable<Object> {
