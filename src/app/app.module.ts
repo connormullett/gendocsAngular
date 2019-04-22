@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DocIndexComponent } from './components/docs/doc-index/doc-index.component';
+import { DocsService } from './services/docs.service';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -34,6 +36,7 @@ const routes = [
     LoginComponent,
     HeaderComponent,
     ProfileComponent,
+    DocIndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ const routes = [
     HttpClientModule,
   ],
   providers: [
-    AuthService
+    AuthService,
+    DocsService,
   ],
   bootstrap: [AppComponent]
 })
