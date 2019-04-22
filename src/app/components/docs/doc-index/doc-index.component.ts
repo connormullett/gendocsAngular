@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocsService } from '../../../services/docs.service';
+import { Doc } from '../../../models/doc';
 
 @Component({
   selector: 'app-doc-index',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocIndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _docsService: DocsService) { }
 
   ngOnInit() {
+    this._docsService.getDocs().subscribe((docs: Doc[]) => {
+    });
   }
 
 }
