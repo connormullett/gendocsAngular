@@ -21,13 +21,15 @@ import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DocIndexComponent } from './components/docs/doc-index/doc-index.component';
 import { DocsService } from './services/docs.service';
+import { HomeComponent } from './components/home/home.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'me', component: ProfileComponent },
   { path: 'docs', component: DocIndexComponent },
-  { path: '**', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
@@ -38,6 +40,7 @@ const routes = [
     HeaderComponent,
     ProfileComponent,
     DocIndexComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
