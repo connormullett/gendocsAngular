@@ -1,3 +1,55 @@
-<li *ngFor='let doc of docs'>
-  {{ doc.title }}
-</li>
+<div class="container-fluid">
+
+  <div class="row">
+    <!-- create button -->
+    <div class="col">
+      <mat-toolbar class="create-button">
+        <button mat-raised-button class="nav-btn" color="primary">Create Post</button>
+      </mat-toolbar>
+    </div>
+
+    <!-- search bar -->
+    <div class="col">
+      <mat-form-field class="search-bar">
+        <input matInput placeholder="Search">
+      </mat-form-field>
+      <button mat-flat-button id="search-button">Search</button>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <!-- Recent activity -->
+    <div class="col-4">
+      <mat-card class="activity">
+        <mat-card-header>
+          <mat-card-title>Activity</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- recent posts -->
+    <div class="col">
+      <mat-card class="activity">
+        <mat-card-header>
+          <mat-card-title>Recent Posts</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <li *ngFor="let doc of docs">
+            {{ doc.title }}
+          </li>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+  <footer>
+
+  </footer>
+
+</div>

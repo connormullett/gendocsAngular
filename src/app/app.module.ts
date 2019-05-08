@@ -10,18 +10,19 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+  MatCardModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DocIndexComponent } from './components/docs/doc-index/doc-index.component';
 import { DocsService } from './services/docs.service';
-import { HomeComponent } from './components/home/home.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -47,6 +48,7 @@ const routes = [
     MatToolbarModule,
     MatButtonModule,
     FormsModule,
+    MatCardModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
