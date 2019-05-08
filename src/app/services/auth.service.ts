@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { UserLogin } from '../models/userLogin';
 import { User } from '../models/user';
 
-export const API_URL = 'http://localhost:5000/v1/users';
+export const API_URL = 'http://localhost:5000';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private _http: HttpClient, private _router: Router) { }
 
   register(regUserData: RegisterUser) {
-    return this._http.post(`${API_URL}/`, regUserData);
+    return this._http.post(`${API_URL}/v1/users/`, regUserData);
   }
 
   login(loginInfo) {
@@ -27,7 +27,7 @@ export class AuthService {
       email: loginInfo.email,
       password: loginInfo.password
     };
-    return this._http.post(`${API_URL}/login`, data).subscribe( (token: Token) => {
+    return this._http.post(`${API_URL}/v1/users/login`, data).subscribe( (token: Token) => {
       localStorage.setItem('id_token', token.token);
       this.isLoggedIn.next(true);
       this._router.navigate(['/'])
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   getMe() {
-    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+    return this._http.get(`${API_URL}/v1/users/me`, { headers: this.setHeaders() });
   }
 
   logout() {
@@ -47,11 +47,11 @@ export class AuthService {
   currentUser(): Observable<Object> {
     if(!localStorage.getItem('id_token')) { return new Observable(o => o.next(false)); }
 
-    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+    return this._http.get(`${API_URL}/v1/users/me`, { headers: this.setHeaders() });
   }
 
   username() {
-    return this._http.get(`${API_URL}/me`, { headers: this.setHeaders() });
+    return this._http.get(`${API_URL}/v1/users/me`, { headers: this.setHeaders() });
   }
 
   setHeaders() {
